@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("n ? ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("m ? ");
+        int m = int.Parse(Console.ReadLine());
+
+        char[,] grid = new char[n, m];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Rad {i + 1} ? ");
+            string row = Console.ReadLine();
+            for (int j = 0; j < m; j++)
+            {
+                grid[i, j] = row[j];
+            }
+        }
+
+        string secretMessage = FindSecretMessage(grid, n, m);
+
+        Console.WriteLine($"Svar: {secretMessage}");
+    }
+
+    static string FindSecretMessage(char[,] grid, int n, int m)
+    {
+        string secretMessage = "";
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                secretMessage += grid[i, j];
+            }
+        }
+
+        return secretMessage;
+    }
+}
