@@ -1,0 +1,38 @@
+// Orkar inte med denna koden helt fel
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Björns protein? ");
+        string protein = Console.ReadLine();
+
+        Console.Write("k? ");
+        int k = Convert.ToInt32(Console.ReadLine());
+
+        int minKlippningar = BeraknaMinKlippningar(protein, k);
+        Console.WriteLine($"Svar: {minKlippningar}");
+    }
+
+    static int BeraknaMinKlippningar(string protein, int k)
+    {
+        int minKlippningar = 0;
+        int klippningarKvar = k;
+
+        for (int i = 1; i < protein.Length; i++)
+        {
+            if (protein[i] != protein[i - 1])
+            {
+                minKlippningar++;
+                klippningarKvar--;
+            }
+
+            if (klippningarKvar == 0)
+                break;
+        }
+
+        return minKlippningar;
+    }
+}
